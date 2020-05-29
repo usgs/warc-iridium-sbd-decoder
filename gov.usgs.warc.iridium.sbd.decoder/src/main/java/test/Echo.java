@@ -49,10 +49,10 @@ public final class Echo
 			System.exit(1);
 		}
 
-		final String port = p_Args[0];
+		final String portS = p_Args[0];
+		final int port = Integer.parseInt(portS);
 		log.info(String.format("Listening on port %s", port));
-		try (final ServerSocket server = new ServerSocket(
-				Integer.parseInt(port));)
+		try (final ServerSocket server = new ServerSocket(port);)
 		{
 			while (true)
 			{
@@ -72,7 +72,8 @@ public final class Echo
 								inputStreamReader);)
 					{
 						final String readLine = bufferedReader.readLine();
-						log.info(String.format("Message: %s", readLine));
+						log.info(String.format("Message: %s",
+								readLine.replaceAll("\r\n", "\n")));
 						w.println("ACK");
 						w.println(readLine);
 					}
