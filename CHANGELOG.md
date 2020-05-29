@@ -8,7 +8,7 @@
  * Specify groupId for maven-compiler-plugin
  * Specify version for maven-compiler-plugin and maven-surefire-plugin in .domain
  * Update .project files for changes in <natures>
- * Update travel.yml to 'install verify' instead of 'clean install'
+ * Update travel.yml to 'install verify' instead of 'clean install', remove openjdk11 build 
  * Add findbugs preference files
 
 ## 1.4.0 - 04/22/2020
