@@ -68,7 +68,8 @@ public class PayloadTest
 	{
 		m_PayloadType = PayloadType.PSEUDOBINARY_B_DATA_FORMAT;
 		m_PayloadBytes = "??T??\\@AB@@@@@i@@@B`e@@\\N".getBytes();
-		m_Testable = Payload.builder((byte) 0x02, m_PayloadType, m_PayloadBytes);
+		m_Testable = Payload.builder((byte) 0x02, m_PayloadType,
+				m_PayloadBytes);
 	}
 
 	/**

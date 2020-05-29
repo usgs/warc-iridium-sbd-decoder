@@ -3,18 +3,14 @@ package gov.usgs.warc.iridium.sbd.decoder.sixbitbinary;
 import static org.junit.Assert.assertEquals;
 
 import com.google.common.collect.Maps;
-
+import gov.usgs.warc.iridium.sbd.decoder.Tests;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import gov.usgs.warc.iridium.sbd.decoder.Tests;
-import gov.usgs.warc.iridium.sbd.decoder.sixbitbinary.Decode;
 
 /**
  * Test {@link Decode}

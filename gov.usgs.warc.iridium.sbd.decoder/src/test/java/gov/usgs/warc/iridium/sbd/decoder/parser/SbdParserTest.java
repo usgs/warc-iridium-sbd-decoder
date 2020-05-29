@@ -56,7 +56,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @ActiveProfiles("test")
 public class SbdParserTest
 {
-
 	/**
 	 * @author darceyj
 	 * @since Feb 12, 2018

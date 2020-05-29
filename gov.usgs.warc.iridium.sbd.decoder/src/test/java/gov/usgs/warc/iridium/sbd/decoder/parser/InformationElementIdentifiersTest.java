@@ -4,14 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-
+import gov.usgs.warc.iridium.sbd.decoder.Tests;
+import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import gov.usgs.warc.iridium.sbd.decoder.Tests;
-import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
-import gov.usgs.warc.iridium.sbd.decoder.parser.InformationElementIdentifiers;
 
 /**
  * Unit test for the {@link InformationElementIdentifiers}

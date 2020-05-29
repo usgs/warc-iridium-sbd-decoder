@@ -1,10 +1,9 @@
 package gov.usgs.warc.iridium.sbd.decoder.parser.elements;
 
+import gov.usgs.warc.iridium.sbd.decoder.parser.SessionStatus;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-
-import gov.usgs.warc.iridium.sbd.decoder.parser.SessionStatus;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

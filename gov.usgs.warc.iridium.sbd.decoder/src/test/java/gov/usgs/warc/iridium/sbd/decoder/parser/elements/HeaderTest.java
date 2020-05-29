@@ -2,17 +2,14 @@ package gov.usgs.warc.iridium.sbd.decoder.parser.elements;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import gov.usgs.warc.iridium.sbd.decoder.Tests;
+import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import gov.usgs.warc.iridium.sbd.decoder.Tests;
-import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
-import gov.usgs.warc.iridium.sbd.decoder.parser.elements.Header;
 
 /**
  * Test the header information element

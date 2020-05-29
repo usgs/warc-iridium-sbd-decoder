@@ -3,15 +3,11 @@ package gov.usgs.warc.iridium.sbd.decoder.parser;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.common.collect.Maps;
-
+import gov.usgs.warc.iridium.sbd.decoder.Tests;
 import java.util.Map;
-
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import gov.usgs.warc.iridium.sbd.decoder.Tests;
-import gov.usgs.warc.iridium.sbd.decoder.parser.SessionStatus;
 
 /**
  * Test the {@link SessionStatus}
