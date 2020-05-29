@@ -87,9 +87,8 @@ public class PseudobinaryBPayloadDecoderTest
 		m_DataTypes = Sets.newTreeSet(ParsingTestsHelper.getDataTypeSet());
 		m_DecoderOrder = getDecodeOrderSet();
 		m_Testable = new PseudobinaryBPayloadDecoder();
-		m_Payload = Payload.builder(PayloadType.PSEUDOBINARY_B_DATA_FORMAT)
-				.id((byte) 0x02)
-				.payload("??T??\\@AB@@@@@i@@@B`e@@\\N".getBytes()).build();
+		m_Payload = Payload.build((byte) 0x02,
+				PayloadType.PSEUDOBINARY_B_DATA_FORMAT, "??T??\\@AB@@@@@i@@@B`e@@\\N".getBytes());
 	}
 
 	/**
@@ -129,13 +128,11 @@ public class PseudobinaryBPayloadDecoderTest
 	@Test
 	public void testDecodeBadType()
 	{
-		assertThatThrownBy(
-				() -> m_Testable.decode(
-						Payload.builder(PayloadType.SUTRON_STANDARD_CSV)
-								.id(m_Payload.getId())
-								.payload(m_Payload.getPayload()).build(),
-						m_DataTypes, m_DecoderOrder))
-								.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> m_Testable.decode(
+				Payload.build(m_Payload.getId(),
+						PayloadType.SUTRON_STANDARD_CSV, m_Payload.getPayload()),
+				m_DataTypes, m_DecoderOrder))
+						.isInstanceOf(IllegalArgumentException.class);
 	}
 
 	/**
@@ -145,9 +142,9 @@ public class PseudobinaryBPayloadDecoderTest
 	@Test
 	public void testDecodeShortPayload()
 	{
-		final Payload payload = Payload
-				.builder(PayloadType.PSEUDOBINARY_B_DATA_FORMAT).id((byte) 0x02)
-				.payload("?xd?zG@IC///J".getBytes()).build();
+		final Payload payload = Payload.build(
+				(byte) 0x02,
+				PayloadType.PSEUDOBINARY_B_DATA_FORMAT, "?xd?zG@IC///J".getBytes());
 		final Map<SbdDataType, Double> dataMap = m_Testable.decode(payload,
 				m_DataTypes, m_DecoderOrder);
 

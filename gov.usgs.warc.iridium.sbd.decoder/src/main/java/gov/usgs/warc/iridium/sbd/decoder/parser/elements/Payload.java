@@ -6,6 +6,7 @@ import gov.usgs.warc.iridium.sbd.domain.SbdDataType;
 import gov.usgs.warc.iridium.sbd.domain.SbdDecodeOrder;
 import java.util.Map;
 import java.util.SortedSet;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,22 +19,29 @@ import lombok.ToString;
  * @since Jan 8, 2018
  *
  */
-@Builder
+@Builder(access = AccessLevel.PRIVATE)
 @Getter
 @EqualsAndHashCode
 @ToString
 public class Payload
 {
 	/**
+	 * @param p_Id
+	 *            the id of the payload
 	 * @param p_PayloadType
 	 *            {@link PayloadType}
+	 * @param p_Data
+	 *            payload data
 	 * @return a new builder to build instances of this class.
 	 * @since Jan 8, 2018
 	 */
-	public static PayloadBuilder builder(final PayloadType p_PayloadType)
+	public static Payload build(final byte p_Id,
+			final PayloadType p_PayloadType, final byte[] p_Data)
 	{
-		return new PayloadBuilder().payloadType(
-				requireNonNull(p_PayloadType, "Payload type is required."));
+		return new PayloadBuilder()
+				.payloadType(requireNonNull(p_PayloadType,
+						"Payload type is required."))
+				.payload(p_Data.clone()).id(p_Id).build();
 	}
 
 	/**

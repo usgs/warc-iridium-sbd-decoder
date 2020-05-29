@@ -76,8 +76,8 @@ public class MessageTest
 		m_Header = Header.builder().cdrId(1).id('0').imei('1')
 				.length((short) 10).momsn((short) 0).mtmsn((short) 0)
 				.sessionTime(1081157732).status('1').build();
-		m_Payload = Payload.builder(PayloadType.PSEUDOBINARY_B_DATA_FORMAT)
-				.id((byte) 0x02).payload(new byte[] { (byte) 0x00 }).build();
+		m_Payload = Payload.build((byte) 0x02,
+				PayloadType.PSEUDOBINARY_B_DATA_FORMAT, new byte[] { (byte) 0x00 });
 		m_LocationInformation = LocationInformation.builder().id((byte) 0x03)
 				.cepRadius(2000L).latitude(45.123).longitude(105.321).build();
 		m_Testable = Message.builder().header(m_Header).payLoad(m_Payload)
