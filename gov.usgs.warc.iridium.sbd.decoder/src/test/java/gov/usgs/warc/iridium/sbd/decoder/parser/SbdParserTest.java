@@ -3,6 +3,7 @@ package gov.usgs.warc.iridium.sbd.decoder.parser;
 import static gov.usgs.warc.iridium.sbd.decoder.ParsingTestsHelper.hexStringToByteArray;
 import static gov.usgs.warc.iridium.sbd.decoder.ParsingTestsHelper.setupMessageBytes;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
 
@@ -32,9 +33,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -119,15 +118,6 @@ public class SbdParserTest
 	 */
 	@MockBean
 	private SbdDecodeOrderProvider<SbdDecodeOrder>	m_DecodeOrderRepository;
-
-	/**
-	 * Rule for asserting that the proper exception is thrown
-	 *
-	 * @since Feb 2, 2018
-	 */
-	@Rule
-	public ExpectedException						m_ExpectedException	= ExpectedException
-			.none();
 
 	/**
 	 * The {@link SbdStationIdProvider}
@@ -374,7 +364,6 @@ public class SbdParserTest
 	public void testParse2() throws Exception
 	{
 		m_TestingByteList = setupMessageBytes("0D");
-		m_ExpectedException.expect(Exception.class);
 		final SbdParser parser = new SbdParser(m_TestingByteList);
 		final Optional<SbdStationId> opt = m_IridiumStationRepository
 				.findByImei(String
@@ -386,7 +375,8 @@ public class SbdParserTest
 		parser.setDecodeConfiguration(
 				m_DataTypeRepository.findByStationId(stationId),
 				m_DecodeOrderRepository.findByStationId(stationId));
-		parser.getValuesFromMessage();
+		assertThatThrownBy(() -> parser.getValuesFromMessage())
+				.isInstanceOf(Exception.class);
 	}
 
 	/**
