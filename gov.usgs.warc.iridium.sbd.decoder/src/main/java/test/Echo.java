@@ -1,13 +1,17 @@
 package test;
 
+import com.google.common.base.Charsets;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,7 +31,10 @@ public final class Echo
 	private static final Logger log = LoggerFactory.getLogger(Echo.class);
 
 	/**
-	 * Simple echo server
+	 * Simple echo server.
+	 *
+	 * Note: suppression of UNENCRYPTED_SERVER_SOCKET; this is a
+	 * proof-of-concept.
 	 *
 	 * @param p_Args
 	 *            one argument: port number to listen on.
@@ -37,6 +44,7 @@ public final class Echo
 	 * @author mckelvym
 	 * @since Jan 29, 2018
 	 */
+	@SuppressFBWarnings("UNENCRYPTED_SERVER_SOCKET")
 	public static void main(final String... p_Args)
 			throws NumberFormatException, UnknownHostException, IOException
 	{
@@ -46,10 +54,10 @@ public final class Echo
 			System.exit(1);
 		}
 
-		final String port = p_Args[0];
+		final String portS = p_Args[0];
+		final int port = Integer.parseInt(portS);
 		log.info(String.format("Listening on port %s", port));
-		try (final ServerSocket server = new ServerSocket(
-				Integer.parseInt(port));)
+		try (final ServerSocket server = new ServerSocket(port);)
 		{
 			while (true)
 			{
@@ -57,20 +65,29 @@ public final class Echo
 				{
 					log.info(String.format("Client connected: %s",
 							client.getInetAddress()));
-					final PrintWriter w = new PrintWriter(
-							client.getOutputStream(), true);
-					final String readLine = new BufferedReader(
-							new InputStreamReader(client.getInputStream()))
-									.readLine();
-					log.info(String.format("Message: %s", readLine));
-					w.println("ACK");
-					w.println(readLine);
+					try (OutputStream outputStream = client.getOutputStream();
+						OutputStreamWriter outputStreamWriter = new OutputStreamWriter(
+								outputStream, Charsets.UTF_8);
+						final PrintWriter w = new PrintWriter(
+								outputStreamWriter, true);
+						InputStream inputStream = client.getInputStream();
+						InputStreamReader inputStreamReader = new InputStreamReader(
+								inputStream, Charsets.UTF_8);
+						BufferedReader bufferedReader = new BufferedReader(
+								inputStreamReader);)
+					{
+						final String readLine = bufferedReader.readLine();
+						log.info(String.format("Message: %s",
+								readLine.replaceAll("\r\n", "\n")));
+						w.println("ACK");
+						w.println(readLine);
+					}
 				}
 			}
 		}
-		catch (final Exception e)
+		catch (final Throwable t)
 		{
-			log.error("Bad stuff happened.", e);
+			log.error("Bad stuff happened.", t);
 		}
 	}
 }

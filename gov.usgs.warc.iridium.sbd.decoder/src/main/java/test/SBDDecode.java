@@ -3,7 +3,7 @@ package test;
 import com.google.common.collect.Lists;
 import com.google.common.io.ByteSource;
 import com.google.common.io.Files;
-
+import gov.usgs.warc.iridium.sbd.decoder.sixbitbinary.Decode;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -11,8 +11,6 @@ import java.nio.ByteOrder;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import gov.usgs.warc.iridium.sbd.decoder.sixbitbinary.Decode;
 
 /**
  * http://www.sutron.com/documents/xlite-9210b-user-manual-3.pdf
@@ -32,8 +30,7 @@ public class SBDDecode
 	public static void main(final String[] p_Args)
 			throws IOException, InterruptedException
 	{
-		final String path = p_Args[0];
-		final List<File> files = Lists.newArrayList(new File(path)
+		final List<File> files = Lists.newArrayList(new File(".")
 				.listFiles(file -> file.getName().endsWith(".sbd")));
 		Collections.sort(files);
 		for (final File file : files)

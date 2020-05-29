@@ -1,5 +1,16 @@
 # USGS Iridium Short Burst Data (SBD) Decoder Library
 
+## 1.5.0 - 05/29/2020
+ * Integration of SpotBugs and address potential bugs reported
+ * Integration of FindSecBugs plugin into SpotBugs and address potential bugs reported
+ * Use ${revision} and ${changelist} in version string
+ * Update to Spring Boot 2.3.0
+ * Specify groupId for maven-compiler-plugin
+ * Specify version for maven-compiler-plugin and maven-surefire-plugin in .domain
+ * Update .project files for changes in <natures>
+ * Update travel.yml to 'install verify' instead of 'clean install', remove openjdk11 build 
+ * Add findbugs preference files
+
 ## 1.4.0 - 04/22/2020
  * Update to Spring Boot 2.2.6
  * Update to Guava 29.0

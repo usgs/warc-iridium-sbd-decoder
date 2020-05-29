@@ -1,10 +1,11 @@
 package test;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Arrays;
 import java.util.List;
@@ -62,23 +63,25 @@ public class Send
 	}
 
 	/**
+	 * Note: suppression of UNENCRYPTED_SOCKET; this is a proof-of-concept.
+	 *
 	 * @param p_Args
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
+	@SuppressFBWarnings("UNENCRYPTED_SOCKET")
 	public static void main(final String[] p_Args)
 			throws IOException, InterruptedException
 	{
 		try (
 			final Socket echoSocket = new Socket(p_Args[0],
 					Integer.parseInt(p_Args[1]));
-			final PrintWriter out = new PrintWriter(
-					echoSocket.getOutputStream(), true);)
+			OutputStream outputStream = echoSocket.getOutputStream();)
 		{
 			final byte[] bytes = Objects
 					.requireNonNull(setupMessageBytes(p_Args[2]));
-			echoSocket.getOutputStream().write(bytes);
-			out.print(bytes);
+			outputStream.write(bytes);
+			outputStream.flush();
 		}
 		System.out.println("Done");
 	}
@@ -119,7 +122,7 @@ public class Send
 		final Long expected = 300234010124740L;
 		final String str = Long.toString(expected);
 		final String finalStr = Strings.padStart(str, 15, '0');
-		final byte[] byteArray = finalStr.getBytes();
+		final byte[] byteArray = finalStr.getBytes(Charsets.UTF_8);
 		addBytestoListFromArray(byteList, hexStringToByteArray(revNum));
 		addBytestoListFromArray(byteList, hexStringToByteArray(msgLen));
 		addBytestoListFromArray(byteList, hexStringToByteArray(headerIEI));
@@ -149,11 +152,13 @@ public class Send
 					hexStringToByteArray(payLoadIE));
 			addBytestoListFromArray(payLoadByteList,
 					hexStringToByteArray(payLoadLen));
-			addBytestoListFromArray(payLoadByteList, payLoadBytes.getBytes());
+			addBytestoListFromArray(payLoadByteList,
+					payLoadBytes.getBytes(Charsets.UTF_8));
 
 			addBytestoListFromArray(byteList, hexStringToByteArray(payLoadIE));
 			addBytestoListFromArray(byteList, hexStringToByteArray(payLoadLen));
-			addBytestoListFromArray(byteList, payLoadBytes.getBytes());
+			addBytestoListFromArray(byteList,
+					payLoadBytes.getBytes(Charsets.UTF_8));
 		}
 
 		/**

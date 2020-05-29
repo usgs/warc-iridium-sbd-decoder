@@ -5,26 +5,31 @@
 
 	<groupId>gov.usgs.warc</groupId>
 	<artifactId>iridium.sbd.decoder</artifactId>
-	<version>1.4.0</version>
+	<version>${revision}${changelist}</version>
 	<name>USGS Iridium Short Burst Data (SBD) Decoder Library</name>
 	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.6.RELEASE</version>
+		<version>2.3.0.RELEASE</version>
 		<relativePath />
 	</parent>
 
 	<properties>
+		<revision>1.5.0</revision>
+		<changelist></changelist>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<com.github.spotbugs_spotbugs-maven-plugin_version>4.0.0</com.github.spotbugs_spotbugs-maven-plugin_version>
+		<com.h3xstream.findsecbugs_com.h3xstream.findsecbugs_version>1.10.1</com.h3xstream.findsecbugs_com.h3xstream.findsecbugs_version>
 	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<useIncrementalCompilation>false</useIncrementalCompilation>
@@ -42,6 +47,33 @@
 						<include>**/*Test.java</include>
 					</includes>
 				</configuration>
+			</plugin>
+			<!-- https://spotbugs.readthedocs.io/en/latest/maven.html -->
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>${com.github.spotbugs_spotbugs-maven-plugin_version}</version>
+				<configuration>
+					<effort>Max</effort>
+					<threshold>Medium</threshold>
+					<failOnError>true</failOnError>
+					<plugins>
+						<plugin>
+							<groupId>com.h3xstream.findsecbugs</groupId>
+							<artifactId>findsecbugs-plugin</artifactId>
+							<version>${com.h3xstream.findsecbugs_com.h3xstream.findsecbugs_version}</version>
+						</plugin>
+					</plugins>
+				</configuration>
+				<executions>
+					<execution>
+						<id>spotbugs:check</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -81,5 +113,31 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!-- For @SuppressFBWarnings -->
+		<dependency>
+			<groupId>com.github.spotbugs</groupId>
+			<artifactId>spotbugs-maven-plugin</artifactId>
+			<version>${com.github.spotbugs_spotbugs-maven-plugin_version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-simple</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<!-- https://spotbugs.github.io/spotbugs-maven-plugin/usage.html -->
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>${com.github.spotbugs_spotbugs-maven-plugin_version}</version>
+				<configuration>
+					<xmlOutput>true</xmlOutput>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

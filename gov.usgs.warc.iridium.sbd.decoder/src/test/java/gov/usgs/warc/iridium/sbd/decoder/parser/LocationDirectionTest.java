@@ -2,12 +2,10 @@ package gov.usgs.warc.iridium.sbd.decoder.parser;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import gov.usgs.warc.iridium.sbd.decoder.Tests;
 import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
-import gov.usgs.warc.iridium.sbd.decoder.parser.LocationDirection;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * The location direction test

@@ -3,6 +3,7 @@ package gov.usgs.warc.iridium.sbd.decoder.parser;
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkState;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -81,8 +82,7 @@ public class SbdParser
 				String.format("Expected 15 bytes for imei but got %s",
 						p_ImeiByteArray.length));
 
-		return Long.parseLong(new String(p_ImeiByteArray));
-
+		return Long.parseLong(new String(p_ImeiByteArray, Charsets.UTF_8));
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class SbdParser
 		/**
 		 * Unused...direction string.
 		 */
-		String.format("%s%s", ns.name(), ew.name());
+		log.debug(String.format("%s%s", ns.name(), ew.name()));
 		final ByteBuffer byteBuffer = ByteBuffer.wrap(p_Bytes, 1, 6);
 		/**
 		 * Byte 2 lat degs
@@ -312,8 +312,7 @@ public class SbdParser
 		}
 
 		final byte id = 2;
-		final Payload payload = Payload.builder(payloadType).id(id)
-				.payload(payloadArray).build();
+		final Payload payload = Payload.builder(id, payloadType, payloadArray);
 		return payload;
 	}
 

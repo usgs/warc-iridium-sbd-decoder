@@ -7,7 +7,6 @@ import static com.google.common.base.Preconditions.checkPositionIndex;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Range;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

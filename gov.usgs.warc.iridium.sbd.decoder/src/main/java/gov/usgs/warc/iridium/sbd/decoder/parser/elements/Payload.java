@@ -6,6 +6,7 @@ import gov.usgs.warc.iridium.sbd.domain.SbdDataType;
 import gov.usgs.warc.iridium.sbd.domain.SbdDecodeOrder;
 import java.util.Map;
 import java.util.SortedSet;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -18,22 +19,29 @@ import lombok.ToString;
  * @since Jan 8, 2018
  *
  */
-@Builder
+@Builder(access = AccessLevel.PRIVATE)
 @Getter
 @EqualsAndHashCode
 @ToString
 public class Payload
 {
 	/**
+	 * @param p_Id
+	 *            the id of the payload
 	 * @param p_PayloadType
 	 *            {@link PayloadType}
+	 * @param p_Data
+	 *            payload data
 	 * @return a new builder to build instances of this class.
 	 * @since Jan 8, 2018
 	 */
-	public static PayloadBuilder builder(final PayloadType p_PayloadType)
+	public static Payload builder(final byte p_Id,
+			final PayloadType p_PayloadType, final byte[] p_Data)
 	{
-		return new PayloadBuilder().payloadType(
-				requireNonNull(p_PayloadType, "Payload type is required."));
+		return new PayloadBuilder()
+				.payloadType(requireNonNull(p_PayloadType,
+						"Payload type is required."))
+				.payload(p_Data.clone()).id(p_Id).build();
 	}
 
 	/**
@@ -80,5 +88,27 @@ public class Payload
 	{
 		return getPayloadType().getPayloadDecoder().decode(this, p_DataTypes,
 				p_DecodeOrder);
+	}
+
+	/**
+	 * Method added to address SpotBugs-reported issue: May expose internal
+	 * representation by returning reference to mutable object.
+	 *
+	 * Returning a reference to a mutable object value stored in one of the
+	 * object's fields exposes the internal representation of the object.  If
+	 * instances are accessed by untrusted code, and unchecked changes to the
+	 * mutable object would compromise security or other important properties,
+	 * you will need to do something different. Returning a new copy of the
+	 * object is better approach in many situations.
+	 *
+	 * Bug kind and pattern: EI - EI_EXPOSE_REP
+	 *
+	 * @return clone of {@link #payload}
+	 * @author mckelvym
+	 * @since May 29, 2020
+	 */
+	public byte[] getPayload()
+	{
+		return payload.clone();
 	}
 }

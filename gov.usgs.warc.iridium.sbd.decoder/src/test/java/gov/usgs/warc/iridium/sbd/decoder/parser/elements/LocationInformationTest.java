@@ -2,13 +2,11 @@ package gov.usgs.warc.iridium.sbd.decoder.parser.elements;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import gov.usgs.warc.iridium.sbd.decoder.Tests;
+import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import gov.usgs.warc.iridium.sbd.decoder.Tests;
-import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
-import gov.usgs.warc.iridium.sbd.decoder.parser.elements.LocationInformation;
 
 /**
  * Test the {@link LocationInformation} element

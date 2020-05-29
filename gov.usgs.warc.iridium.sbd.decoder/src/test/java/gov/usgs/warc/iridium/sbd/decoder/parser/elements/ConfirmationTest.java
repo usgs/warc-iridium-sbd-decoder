@@ -2,14 +2,12 @@ package gov.usgs.warc.iridium.sbd.decoder.parser.elements;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import gov.usgs.warc.iridium.sbd.decoder.Tests;
 import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
 import gov.usgs.warc.iridium.sbd.decoder.parser.InformationElementIdentifiers;
-import gov.usgs.warc.iridium.sbd.decoder.parser.elements.Confirmation;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Test the Confirmation element

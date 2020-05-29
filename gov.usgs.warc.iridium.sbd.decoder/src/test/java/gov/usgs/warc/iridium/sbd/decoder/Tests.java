@@ -2,13 +2,11 @@ package gov.usgs.warc.iridium.sbd.decoder;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Sets;
-
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Collection;
 import java.util.Set;
 import java.util.SortedSet;
-
 import org.springframework.context.annotation.Bean;
 
 /**
