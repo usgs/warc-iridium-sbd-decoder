@@ -312,7 +312,7 @@ public class SbdParser
 		}
 
 		final byte id = 2;
-		final Payload payload = Payload.build(id, payloadType, payloadArray);
+		final Payload payload = Payload.builder(id, payloadType, payloadArray);
 		return payload;
 	}
 

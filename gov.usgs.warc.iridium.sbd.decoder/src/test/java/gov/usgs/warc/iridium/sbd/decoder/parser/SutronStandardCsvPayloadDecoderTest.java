@@ -174,7 +174,7 @@ public class SutronStandardCsvPayloadDecoderTest
 				+ "03/21/2019,15:00:00,Baro MB,1020.4,F,G\r\n"
 				+ "03/21/2019,21:45:00,Prtctd,0.24,ft,G\r\n"
 				+ ":YB 13.95 :YN 073802332 :SN 1611330 ";
-		m_Payload = Payload.build((byte) 0x02,
+		m_Payload = Payload.builder((byte) 0x02,
 				PayloadType.SUTRON_STANDARD_CSV, payLoadBytes.getBytes());
 		m_Line = Lists.newArrayList("03/21/2019", "21:45:00", "Prtctd", "0.24",
 				"ft", "G");

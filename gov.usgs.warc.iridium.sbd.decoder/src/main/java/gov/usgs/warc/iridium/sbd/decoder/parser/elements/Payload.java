@@ -35,7 +35,7 @@ public class Payload
 	 * @return a new builder to build instances of this class.
 	 * @since Jan 8, 2018
 	 */
-	public static Payload build(final byte p_Id,
+	public static Payload builder(final byte p_Id,
 			final PayloadType p_PayloadType, final byte[] p_Data)
 	{
 		return new PayloadBuilder()
