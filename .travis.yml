@@ -11,4 +11,4 @@ jdk:
 dist: trusty
 
 script: 
- - mvn clean install   
+ - mvn install verify   

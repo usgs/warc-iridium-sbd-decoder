@@ -1,0 +1,7 @@
+#SpotBugs User Preferences
+#Thu May 28 15:59:21 EDT 2020
+detector_threshold=2
+effort=max
+filter_settings=Medium|BAD_PRACTICE,CORRECTNESS,EXPERIMENTAL,I18N,MALICIOUS_CODE,MT_CORRECTNESS,PERFORMANCE,SECURITY,STYLE|false|15
+filter_settings_neg=NOISE|
+run_at_full_build=false

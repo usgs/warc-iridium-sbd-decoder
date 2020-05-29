@@ -5,19 +5,25 @@
 
 	<groupId>gov.usgs.warc</groupId>
 	<artifactId>iridium.sbd.domain</artifactId>
-	<version>1.4.0</version>
+	<version>${revision}${changelist}</version>
 	<name>USGS Iridium Short Burst Data (SBD) Decoder Library - Domain Interfaces</name>
 	<packaging>jar</packaging>
 
 	<properties>
+		<revision>1.5.0</revision>
+		<changelist></changelist>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<com.github.spotbugs_spotbugs-maven-plugin_version>4.0.0</com.github.spotbugs_spotbugs-maven-plugin_version>
+		<com.h3xstream.findsecbugs_com.h3xstream.findsecbugs_version>1.10.1</com.h3xstream.findsecbugs_com.h3xstream.findsecbugs_version>
 	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
 				<configuration>
 					<useIncrementalCompilation>false</useIncrementalCompilation>
 					<source>1.8</source>
@@ -27,6 +33,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
 				<configuration>
 					<!-- see: https://stackoverflow.com/questions/53010200/maven-surefire-could-not-find-forkedbooter-class -->
 					<argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
@@ -34,6 +41,33 @@
 						<include>**/*Test.java</include>
 					</includes>
 				</configuration>
+			</plugin>
+			<!-- https://spotbugs.readthedocs.io/en/latest/maven.html -->
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>${com.github.spotbugs_spotbugs-maven-plugin_version}</version>
+				<configuration>
+					<effort>Max</effort>
+					<threshold>Medium</threshold>
+					<failOnError>true</failOnError>
+					<plugins>
+						<plugin>
+							<groupId>com.h3xstream.findsecbugs</groupId>
+							<artifactId>findsecbugs-plugin</artifactId>
+							<version>${com.h3xstream.findsecbugs_com.h3xstream.findsecbugs_version}</version>
+						</plugin>
+					</plugins>
+				</configuration>
+				<executions>
+					<execution>
+						<id>spotbugs:check</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -50,4 +84,18 @@
 			<version>2.4.2</version>
 		</dependency>
 	</dependencies>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<!-- https://spotbugs.github.io/spotbugs-maven-plugin/usage.html -->
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>${com.github.spotbugs_spotbugs-maven-plugin_version}</version>
+				<configuration>
+					<xmlOutput>true</xmlOutput>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
