@@ -80,9 +80,9 @@ public final class Echo
 				}
 			}
 		}
-		catch (final Exception e)
+		catch (final Throwable t)
 		{
-			log.error("Bad stuff happened.", e);
+			log.error("Bad stuff happened.", t);
 		}
 	}
 }
