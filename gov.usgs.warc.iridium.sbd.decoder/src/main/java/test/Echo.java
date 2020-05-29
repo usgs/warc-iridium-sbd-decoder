@@ -1,6 +1,7 @@
 package test;
 
 import com.google.common.base.Charsets;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +31,10 @@ public final class Echo
 	private static final Logger log = LoggerFactory.getLogger(Echo.class);
 
 	/**
-	 * Simple echo server
+	 * Simple echo server.
+	 *
+	 * Note: suppression of UNENCRYPTED_SERVER_SOCKET; this is a
+	 * proof-of-concept.
 	 *
 	 * @param p_Args
 	 *            one argument: port number to listen on.
@@ -40,6 +44,7 @@ public final class Echo
 	 * @author mckelvym
 	 * @since Jan 29, 2018
 	 */
+	@SuppressFBWarnings("UNENCRYPTED_SERVER_SOCKET")
 	public static void main(final String... p_Args)
 			throws NumberFormatException, UnknownHostException, IOException
 	{
