@@ -1,7 +1,6 @@
 package test;
 
 import com.google.common.base.Charsets;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,7 +43,6 @@ public final class Echo
 	 * @author mckelvym
 	 * @since Jan 29, 2018
 	 */
-	@SuppressFBWarnings("UNENCRYPTED_SERVER_SOCKET")
 	public static void main(final String... p_Args)
 			throws NumberFormatException, UnknownHostException, IOException
 	{

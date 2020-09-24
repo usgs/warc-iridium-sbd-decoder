@@ -3,7 +3,6 @@ package test;
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -69,7 +68,6 @@ public class Send
 	 * @throws IOException
 	 * @throws InterruptedException
 	 */
-	@SuppressFBWarnings("UNENCRYPTED_SOCKET")
 	public static void main(final String[] p_Args)
 			throws IOException, InterruptedException
 	{

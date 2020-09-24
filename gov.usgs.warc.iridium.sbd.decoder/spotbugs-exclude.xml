@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+	<Match>
+		<Bug pattern="UNENCRYPTED_SERVER_SOCKET" />
+		<Class
+			name="test.Echo" />
+		<Method name="main" />
+	</Match>
+	<Match>
+		<Bug pattern="UNENCRYPTED_SOCKET" />
+		<Class
+			name="test.Send" />
+		<Method name="main" />
+	</Match>
+</FindBugsFilter>
