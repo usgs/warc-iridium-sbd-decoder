@@ -4,10 +4,10 @@ language: java
 sudo: false
 
 jdk:
-  - openjdk8
-  - oraclejdk8
+  - openjdk11
+  - oraclejdk11
   
-dist: trusty
+dist: focal
 
 script: 
  - mvn install verify   

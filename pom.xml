@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<revision>1.5.0</revision>
+		<revision>2.0.0</revision>
 		<changelist></changelist>
 	</properties>
 
