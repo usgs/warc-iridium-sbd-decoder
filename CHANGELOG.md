@@ -9,8 +9,6 @@
  * Remove argLine for forked booter (https://stackoverflow.com/questions/53010200/maven-surefire-could-not-find-forkedbooter-class)
  * Update .classpath files for Java 11
  * Removed unused/unnecessary preferences in .settings
- * Update RecordDeliverablesNotificationConfiguration with `@Profile({ "local", "development", "production" })`
- * Update MessageQueueProcessorTest to ensure message recipients are "active" in setup
  * Add spotbugs-exclude.xml file
   
 ## 1.5.0 - 2020-05-29
