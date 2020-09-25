@@ -1,6 +1,6 @@
 # USGS Iridium Short Burst Data (SBD) Decoder Library
 
-## 2.0.0 - 2020-09-24
+## 2.0.0 - 2020-09-25
  * Migrate to Java 11 release 
  * Update Spring Boot to 2.3.4.RELEASE
  * com.github.spotbugs:spotbugs-maven-plugin 4.0.0 -> 4.0.4
