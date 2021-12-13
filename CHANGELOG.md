@@ -7,6 +7,7 @@
  * com.google.guava:guava 29.0-jre -> 31.0.1-jre
  * com.h3xstream.findsecbugs:findsecbugs-plugin 1.10.1 -> 1.11.0
  * Add org.springframework.batch:spring-batch-test
+ * Migrate JUnit tests and annotations for Junit Jupiter
 
 ## 2.0.0 - 2020-09-25
  * Migrate to Java 11 release 
