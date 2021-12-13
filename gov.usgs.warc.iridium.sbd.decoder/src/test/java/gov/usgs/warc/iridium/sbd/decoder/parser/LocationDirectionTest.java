@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import gov.usgs.warc.iridium.sbd.decoder.Tests;
 import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /**
  * The location direction test
@@ -23,8 +23,8 @@ public class LocationDirectionTest
 	 * @throws java.lang.Exception
 	 * @since Jan 26, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = LocationDirection.class;
 		final Class<?> testingClass = LocationDirectionTest.class;

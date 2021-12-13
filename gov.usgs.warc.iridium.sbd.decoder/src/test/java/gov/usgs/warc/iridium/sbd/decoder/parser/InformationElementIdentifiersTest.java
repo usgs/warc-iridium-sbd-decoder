@@ -6,9 +6,9 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import gov.usgs.warc.iridium.sbd.decoder.Tests;
 import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for the {@link InformationElementIdentifiers}
@@ -26,8 +26,8 @@ public class InformationElementIdentifiersTest
 	 * @throws java.lang.Exception
 	 * @since Jan 29, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> testingClass = InformationElementIdentifiersTest.class;
 		final Class<?> classToTest = InformationElementIdentifiers.class;
@@ -48,7 +48,7 @@ public class InformationElementIdentifiersTest
 	 * @throws java.lang.Exception
 	 * @since Jan 29, 2018
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception
 	{
 		m_IdMap = HashBiMap.create();

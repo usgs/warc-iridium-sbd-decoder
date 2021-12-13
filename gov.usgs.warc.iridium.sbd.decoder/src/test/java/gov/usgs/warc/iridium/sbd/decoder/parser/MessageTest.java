@@ -8,9 +8,9 @@ import gov.usgs.warc.iridium.sbd.decoder.parser.elements.Header;
 import gov.usgs.warc.iridium.sbd.decoder.parser.elements.LocationInformation;
 import gov.usgs.warc.iridium.sbd.decoder.parser.elements.Payload;
 import gov.usgs.warc.iridium.sbd.decoder.parser.elements.PayloadType;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test the {@link Message} class
@@ -27,8 +27,8 @@ public class MessageTest
 	 * @throws java.lang.Exception
 	 * @since Jan 5, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = Message.class;
 		final Class<?> testingClass = MessageTest.class;
@@ -70,7 +70,7 @@ public class MessageTest
 	 * @throws java.lang.Exception
 	 * @since Jan 8, 2018
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception
 	{
 		m_Header = Header.builder().cdrId(1).id('0').imei('1')

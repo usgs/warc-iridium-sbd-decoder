@@ -4,9 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import gov.usgs.warc.iridium.sbd.decoder.Tests;
 import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test the {@link LocationInformation} element
@@ -23,8 +23,8 @@ public class LocationInformationTest
 	 * @throws java.lang.Exception
 	 * @since Jan 8, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = LocationInformation.class;
 		final Class<?> testingClass = LocationInformationTest.class;
@@ -46,7 +46,7 @@ public class LocationInformationTest
 	 *
 	 * @since Jan 8, 2018
 	 */
-	@Before
+	@BeforeEach
 	public void setUp()
 	{
 		m_Testable = LocationInformation.builder().cepRadius(1).id((byte) 0x03)

@@ -9,9 +9,9 @@ import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
 import gov.usgs.warc.iridium.sbd.domain.SbdDataType;
 import java.util.Map;
 import java.util.Map.Entry;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test the {@link Payload} element
@@ -28,8 +28,8 @@ public class PayloadTest
 	 * @throws java.lang.Exception
 	 * @since Jan 5, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = Payload.class;
 		final Class<?> testingClass = PayloadTest.class;
@@ -63,7 +63,7 @@ public class PayloadTest
 	 *
 	 * @since Jan 8, 2018
 	 */
-	@Before
+	@BeforeEach
 	public void setUp()
 	{
 		m_PayloadType = PayloadType.PSEUDOBINARY_B_DATA_FORMAT;

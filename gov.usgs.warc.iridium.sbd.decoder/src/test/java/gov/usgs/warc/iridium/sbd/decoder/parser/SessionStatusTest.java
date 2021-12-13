@@ -5,9 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.google.common.collect.Maps;
 import gov.usgs.warc.iridium.sbd.decoder.Tests;
 import java.util.Map;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test the {@link SessionStatus}
@@ -24,8 +24,8 @@ public class SessionStatusTest
 	 * @throws java.lang.Exception
 	 * @since Jan 8, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = SessionStatus.class;
 		final Class<?> testingClass = SessionStatusTest.class;
@@ -51,7 +51,7 @@ public class SessionStatusTest
 	 *
 	 * @since Jan 8, 2018
 	 */
-	@Before
+	@BeforeEach
 	public void setUp()
 	{
 		m_ErrorMap = Maps.newHashMap();

@@ -7,9 +7,9 @@ import gov.usgs.warc.iridium.sbd.decoder.Tests.SkipMethod;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test the header information element
@@ -27,8 +27,8 @@ public class HeaderTest
 	 * @throws java.lang.Exception
 	 * @since Jan 5, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = Header.class;
 		final Class<?> testingClass = HeaderTest.class;
@@ -50,7 +50,7 @@ public class HeaderTest
 	 *
 	 * @since Jan 8, 2018
 	 */
-	@Before
+	@BeforeEach
 	public void setUp()
 	{
 		m_Testable = Header.builder().cdrId(1).id('0').imei('1')

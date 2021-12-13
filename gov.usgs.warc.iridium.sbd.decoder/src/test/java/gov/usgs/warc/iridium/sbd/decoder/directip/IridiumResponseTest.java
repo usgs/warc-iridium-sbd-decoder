@@ -20,9 +20,9 @@ import gov.usgs.warc.iridium.sbd.domain.SbdStationIdProvider;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -91,8 +91,8 @@ public class IridiumResponseTest
 	 * @throws java.lang.Exception
 	 * @since Feb 12, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = IridiumResponse.class;
 		final Class<?> testingClass = IridiumResponseTest.class;
@@ -143,7 +143,7 @@ public class IridiumResponseTest
 	 * @throws java.lang.Exception
 	 * @since Feb 12, 2018
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception
 	{
 		m_StationIdTest = 1L;
