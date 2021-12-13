@@ -9,8 +9,8 @@ import gov.usgs.warc.iridium.sbd.decoder.Tests;
 import gov.usgs.warc.iridium.sbd.decoder.parser.PayloadDecoder;
 import gov.usgs.warc.iridium.sbd.decoder.parser.PseudobinaryBPayloadDecoder;
 import gov.usgs.warc.iridium.sbd.decoder.parser.SutronStandardCsvPayloadDecoder;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test for {@link PayloadType}
@@ -27,8 +27,8 @@ public class PayloadTypeTest
 	 * @author mckelvym
 	 * @since Mar 22, 2019
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = PayloadType.class;
 		final Class<?> testingClass = PayloadTypeTest.class;

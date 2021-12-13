@@ -1,14 +1,14 @@
 package gov.usgs.warc.iridium.sbd.decoder.sixbitbinary;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.google.common.collect.Maps;
 import gov.usgs.warc.iridium.sbd.decoder.Tests;
 import java.util.Map;
 import java.util.Map.Entry;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test {@link BitString}
@@ -25,8 +25,8 @@ public class BitStringTest
 	 * @author mckelvym
 	 * @since Jan 5, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = BitString.class;
 		final Class<?> testingClass = BitStringTest.class;
@@ -46,7 +46,7 @@ public class BitStringTest
 	 * @author mckelvym
 	 * @since Jan 5, 2018
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception
 	{
 		m_TestValues = Maps.newHashMap();
@@ -64,8 +64,9 @@ public class BitStringTest
 	{
 		for (final Entry<String, Integer> entry : m_TestValues.entrySet())
 		{
-			assertEquals(entry.getKey(), entry.getValue().intValue(),
-					BitString.parseTwosComplement(entry.getKey()).intValue());
+			assertEquals(entry.getValue().intValue(),
+					BitString.parseTwosComplement(entry.getKey()).intValue(),
+					entry.getKey());
 		}
 	}
 

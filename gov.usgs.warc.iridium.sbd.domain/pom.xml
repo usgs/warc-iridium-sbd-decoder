@@ -10,12 +10,14 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<revision>2.0.0</revision>
+		<revision>2.1.0</revision>
 		<changelist></changelist>
+		<com.github.spotbugs_spotbugs-maven-plugin_version>4.2.3</com.github.spotbugs_spotbugs-maven-plugin_version>
+		<com.google.guava.version>31.0.1-jre</com.google.guava.version>
+		<com.h3xstream.findsecbugs_com.h3xstream.findsecbugs_version>1.11.0</com.h3xstream.findsecbugs_com.h3xstream.findsecbugs_version>
+		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<com.github.spotbugs_spotbugs-maven-plugin_version>4.0.4</com.github.spotbugs_spotbugs-maven-plugin_version>
-		<com.h3xstream.findsecbugs_com.h3xstream.findsecbugs_version>1.10.1</com.h3xstream.findsecbugs_com.h3xstream.findsecbugs_version>
 	</properties>
 
 	<build>
@@ -103,7 +105,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>29.0-jre</version>
+			<version>${com.google.guava.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.scijava</groupId>

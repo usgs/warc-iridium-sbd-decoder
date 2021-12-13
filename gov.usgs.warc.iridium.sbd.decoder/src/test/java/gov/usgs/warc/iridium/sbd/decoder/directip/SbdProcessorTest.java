@@ -24,9 +24,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -97,8 +97,8 @@ public class SbdProcessorTest
 	 * @throws java.lang.Exception
 	 * @since Feb 12, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = SbdProcessor.class;
 		final Class<?> testingClass = SbdProcessorTest.class;
@@ -155,7 +155,7 @@ public class SbdProcessorTest
 	 * @author mckelvym
 	 * @since Mar 30, 2018
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception
 	{
 		m_TestingData = Maps.newLinkedHashMap();
@@ -235,10 +235,16 @@ public class SbdProcessorTest
 			final IridiumResponse expected = entry.getValue();
 			try
 			{
-				final Optional<IridiumResponse> response = m_Testable
+				final Optional<IridiumResponse> responseOpt = m_Testable
 						.process(Bytes.toArray(input), null);
-				assertThat(response.get())
-						.isEqualToComparingFieldByField(expected);
+				final IridiumResponse response = responseOpt.get();
+				assertThat(response.getMessage())
+						.isEqualTo(expected.getMessage());
+				assertThat(response.getStations())
+						.isEqualTo(expected.getStations());
+				assertThat(response.getValues())
+						.isEqualTo(expected.getValues());
+
 			}
 			catch (final Exception e)
 			{

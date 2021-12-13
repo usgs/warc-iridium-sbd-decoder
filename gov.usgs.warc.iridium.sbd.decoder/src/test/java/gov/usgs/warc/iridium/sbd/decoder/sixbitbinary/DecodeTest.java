@@ -1,6 +1,6 @@
 package gov.usgs.warc.iridium.sbd.decoder.sixbitbinary;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.google.common.collect.Maps;
 import gov.usgs.warc.iridium.sbd.decoder.Tests;
@@ -8,9 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test {@link Decode}
@@ -26,8 +26,8 @@ public class DecodeTest
 	 * @author mckelvym
 	 * @since Jan 5, 2018
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = Decode.class;
 		final Class<?> testingClass = DecodeTest.class;
@@ -46,7 +46,7 @@ public class DecodeTest
 	 * @author mckelvym
 	 * @since Jan 5, 2018
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception
 	{
 		m_TestValuesFromBytes = Maps.newHashMap();
@@ -83,9 +83,9 @@ public class DecodeTest
 		for (final Entry<List<Byte>, Integer> entry : m_TestValuesFromBytes
 				.entrySet())
 		{
-			assertEquals(Arrays.toString(entry.getKey().toArray()),
-					entry.getValue().intValue(),
-					Decode.valueFromBytes(entry.getKey()).intValue());
+			assertEquals(entry.getValue().intValue(),
+					Decode.valueFromBytes(entry.getKey()).intValue(),
+					Arrays.toString(entry.getKey().toArray()));
 		}
 	}
 

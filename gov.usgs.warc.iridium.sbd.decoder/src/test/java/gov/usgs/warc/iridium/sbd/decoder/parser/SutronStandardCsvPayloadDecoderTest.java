@@ -20,9 +20,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.SortedSet;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test {@link SutronStandardCsvPayloadDecoder}
@@ -102,8 +102,8 @@ public class SutronStandardCsvPayloadDecoderTest
 	 * @author mckelvym
 	 * @since Mar 22, 2019
 	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception
+	@BeforeAll
+	public static void setUpBeforeAll() throws Exception
 	{
 		final Class<?> classToTest = SutronStandardCsvPayloadDecoder.class;
 		final Class<?> testingClass = SutronStandardCsvPayloadDecoderTest.class;
@@ -149,7 +149,7 @@ public class SutronStandardCsvPayloadDecoderTest
 	 * @author mckelvym
 	 * @since Mar 22, 2019
 	 */
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception
 	{
 		m_DataTypes = Sets.newTreeSet();
