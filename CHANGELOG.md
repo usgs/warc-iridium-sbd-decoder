@@ -6,6 +6,7 @@
  * com.github.spotbugs:spotbugs-maven-plugin 4.0.4 -> 4.2.3
  * com.google.guava:guava 29.0-jre -> 31.0.1-jre
  * com.h3xstream.findsecbugs:findsecbugs-plugin 1.10.1 -> 1.11.0
+ * Add org.springframework.batch:spring-batch-test
 
 ## 2.0.0 - 2020-09-25
  * Migrate to Java 11 release 

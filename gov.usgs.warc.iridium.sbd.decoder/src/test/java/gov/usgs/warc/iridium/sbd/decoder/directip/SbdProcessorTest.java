@@ -235,10 +235,16 @@ public class SbdProcessorTest
 			final IridiumResponse expected = entry.getValue();
 			try
 			{
-				final Optional<IridiumResponse> response = m_Testable
+				final Optional<IridiumResponse> responseOpt = m_Testable
 						.process(Bytes.toArray(input), null);
-				assertThat(response.get()).usingRecursiveComparison()
-						.isEqualTo(expected);
+				final IridiumResponse response = responseOpt.get();
+				assertThat(response.getMessage())
+						.isEqualTo(expected.getMessage());
+				assertThat(response.getStations())
+						.isEqualTo(expected.getStations());
+				assertThat(response.getValues())
+						.isEqualTo(expected.getValues());
+
 			}
 			catch (final Exception e)
 			{
