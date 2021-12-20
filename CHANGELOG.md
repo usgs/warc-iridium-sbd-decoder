@@ -1,5 +1,9 @@
 # USGS Iridium Short Burst Data (SBD) Decoder Library
 
+## 2.1.2 - 2021-12-20
+ * Explicitly specify property log4j2.version 2.17.0
+ * Explicitly specify property logback.version 1.2.9
+
 ## 2.1.1 - 2021-12-15
  * Explicitly specify property log4j2.version 2.16.0
 
