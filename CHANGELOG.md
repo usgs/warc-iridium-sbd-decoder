@@ -1,5 +1,9 @@
 # USGS Iridium Short Burst Data (SBD) Decoder Library
 
+## 2.2.0 - 2022-01-04
+ * Explicitly specify property log4j2.version 2.17.1
+ * Update Spring Boot to 2.6.2
+
 ## 2.1.2 - 2021-12-20
  * Explicitly specify property log4j2.version 2.17.0
  * Explicitly specify property logback.version 1.2.9
