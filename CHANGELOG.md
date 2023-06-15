@@ -1,5 +1,8 @@
 # USGS Iridium Short Burst Data (SBD) Decoder Library
 
+## 2.3.0 - 2023-06-15
+ * Update com.google.guava 31.0.1-jre -> 32.0.0-jre
+ 
 ## 2.2.0 - 2022-01-04
  * Explicitly specify property log4j2.version 2.17.1
  * Update Spring Boot to 2.6.2
